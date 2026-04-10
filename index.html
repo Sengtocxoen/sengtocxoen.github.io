@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyen Huu Minh Sang – Cloud Security Engineer</title>
+  <meta name="description" content="Cloud Security Engineer with 2+ years at VNPAY and Resola INC. Specializing in AWS security architecture, SOC/SIEM operations, and penetration testing.">
+  <meta name="author" content="Nguyen Huu Minh Sang">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Nguyen Huu Minh Sang – Cloud Security Engineer">
+  <meta property="og:description" content="Cloud Security Engineer specializing in AWS security, SOC/SIEM operations, and web application penetration testing. Active HackerOne bug bounty researcher.">
+  <meta property="og:url" content="https://sengtocxoen.github.io">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nguyen Huu Minh Sang – Cloud Security Engineer">
+  <meta name="twitter:description" content="Cloud Security Engineer specializing in AWS security, SOC/SIEM, and penetration testing.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:   #0ea5e9;
+      --accent2:  #6366f1;
+      --dark:     #0f172a;
+      --mid:      #1e293b;
+      --border:   #334155;
+      --muted:    #64748b;
+      --light:    #94a3b8;
+      --text:     #e2e8f0;
+      --white:    #f8fafc;
+    }
+
+    html { font-size: 11pt; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    /* ── Print layout ───────────────────────────────── */
+    @page { margin: 10mm 10mm; size: A4; }
+
+    @media print {
+      body { 
+        background: #fff; 
+        color: #111; 
+        font-size: 9pt; 
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact;
+      }
+      :root {
+        --accent: #0369a1;
+        --accent2: #4338ca;
+        --dark: #fff;
+        --mid: #f8fafc;
+        --border: #cbd5e1;
+        --muted: #475569;
+        --light: #64748b;
+        --text: #1e293b;
+        --white: #0f172a;
+      }
+      .no-print { display: none !important; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; margin: 0; width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      section { page-break-inside: avoid; break-inside: avoid; }
+      .exp-card, .proj-card, .bb-finding-card, .edu-card, .skill-group {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+    }
+
+    /* ── Page wrapper ───────────────────────────────── */
+    .page {
+      max-width: 860px;
+      margin: 32px auto;
+      background: var(--mid);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,.6);
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1065 100%);
+      padding: 36px 44px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(99,102,241,.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 30%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(14,165,233,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -.5px;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .title-badge {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(14,165,233,.4);
+      background: rgba(14,165,233,.08);
+      border-radius: 4px;
+      padding: 3px 10px;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 14px;
+      list-style: none;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .82rem;
+      color: var(--light);
+    }
+    .contact-list a { color: var(--accent); text-decoration: none; }
+    .contact-list svg { flex-shrink: 0; }
+
+    /* hackerone badge */
+    .h1-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(255,95,31,.15), rgba(255,95,31,.05));
+      border: 1px solid rgba(255,95,31,.45);
+      border-radius: 8px;
+      padding: 10px 16px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .h1-badge:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,95,31,.3); }
+    .h1-badge-icon { width: 28px; height: 28px; }
+    .h1-badge-text { display: flex; flex-direction: column; line-height: 1.3; }
+    .h1-badge-handle { font-size: .85rem; font-weight: 700; color: #ff5f1f; }
+    .h1-badge-sub { font-size: .7rem; color: var(--light); }
+    .h1-stats {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .stat-pill {
+      font-size: .65rem;
+      font-weight: 600;
+      background: rgba(255,95,31,.18);
+      color: #ff8c5a;
+      border-radius: 20px;
+      padding: 2px 8px;
+    }
+
+    /* ── Summary banner ─────────────────────────────── */
+    .summary {
+      background: rgba(14,165,233,.07);
+      border-left: 3px solid var(--accent);
+      padding: 14px 44px;
+      font-size: .9rem;
+      color: var(--light);
+      line-height: 1.7;
+    }
+    .summary strong { color: var(--text); }
+
+    /* ── Main content ───────────────────────────────── */
+    main { padding: 0 44px 36px; }
+
+    section { margin-top: 28px; }
+
+    /* Section headings */
+    .sec-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .sec-heading h2 {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .sec-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Experience card ────────────────────────────── */
+    .exp-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      position: relative;
+      transition: border-color .2s;
+    }
+    .exp-card:hover { border-color: var(--accent); }
+
+    .exp-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .exp-company { font-weight: 700; color: var(--white); font-size: .98rem; }
+    .exp-date {
+      font-size: .75rem;
+      color: var(--muted);
+      font-family: 'Fira Code', monospace;
+      white-space: nowrap;
+    }
+    .exp-role { font-size: .82rem; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+
+    .bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .bullets li {
+      display: flex;
+      gap: 8px;
+      font-size: .83rem;
+      color: var(--light);
+      line-height: 1.5;
+    }
+    .bullets li::before {
+      content: '›';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .bullets li strong { color: var(--text); }
+
+    /* ── Bug Bounty section ─────────────────────────── */
+    .bb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .bb-stat-card {
+      background: linear-gradient(135deg, rgba(255,95,31,.1), rgba(255,95,31,.03));
+      border: 1px solid rgba(255,95,31,.3);
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .bb-stat-value { font-size: 1.5rem; font-weight: 700; color: #ff5f1f; }
+    .bb-stat-label { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    .bb-finding-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .bb-finding-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .bb-finding-title { font-weight: 600; color: var(--text); font-size: .88rem; }
+    .bb-severity {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+    .sev-med { background: rgba(234,179,8,.15); color: #eab308; border: 1px solid rgba(234,179,8,.3); }
+    .sev-low { background: rgba(59,130,246,.15); color: #60a5fa; border: 1px solid rgba(59,130,246,.3); }
+    .bb-finding-desc { font-size: .79rem; color: var(--light); }
+    .bb-reward { font-size: .75rem; color: #4ade80; font-weight: 600; margin-top: 4px; }
+
+    .bb-profile-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .82rem;
+      color: #ff5f1f;
+      text-decoration: none;
+      border: 1px solid rgba(255,95,31,.3);
+      border-radius: 6px;
+      padding: 6px 14px;
+      transition: background .2s;
+    }
+    .bb-profile-link:hover { background: rgba(255,95,31,.1); }
+
+    /* ── Skills grid ────────────────────────────────── */
+    .skills-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+    .skill-group { }
+    .skill-group-title {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent2);
+      margin-bottom: 8px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: .72rem;
+      background: rgba(99,102,241,.1);
+      border: 1px solid rgba(99,102,241,.25);
+      color: var(--light);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* ── Projects ───────────────────────────────────── */
+    .proj-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    .proj-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .proj-title { font-weight: 700; color: var(--white); font-size: .93rem; }
+    .proj-year { font-size: .72rem; color: var(--muted); font-family: 'Fira Code', monospace; }
+    .proj-desc { font-size: .82rem; color: var(--light); margin-bottom: 8px; line-height: 1.55; }
+    .proj-tech { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tech-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: .68rem;
+      background: rgba(14,165,233,.1);
+      border: 1px solid rgba(14,165,233,.25);
+      color: var(--accent);
+      border-radius: 3px;
+      padding: 1px 6px;
+    }
+    .proj-link { font-size: .75rem; color: var(--accent2); text-decoration: none; }
+    .proj-link:hover { text-decoration: underline; }
+
+    /* ── Education & Certs ──────────────────────────── */
+    .edu-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: start;
+      padding: 14px 20px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .edu-org { font-weight: 700; color: var(--white); font-size: .92rem; }
+    .edu-degree { font-size: .82rem; color: var(--accent); margin-top: 2px; }
+    .edu-desc { font-size: .79rem; color: var(--light); margin-top: 4px; }
+    .edu-date { font-size: .72rem; color: var(--muted); font-family: 'Fira Code', monospace; white-space: nowrap; }
+
+    .cert-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .cert-list li {
+      display: flex;
+      gap: 10px;
+      align-items: start;
+      font-size: .83rem;
+      color: var(--light);
+    }
+    .cert-list li::before { content: '✓'; color: #4ade80; font-weight: 700; flex-shrink: 0; }
+    .cert-list li strong { color: var(--text); }
+
+    /* ── Print button ───────────────────────────────── */
+    .print-bar {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+    .btn-primary { background: linear-gradient(135deg, #0ea5e9, #6366f1); color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- Print button -->
+<div class="print-bar no-print">
+  <button class="btn btn-primary" onclick="window.print()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Save as PDF
+  </button>
+</div>
+
+<div class="page">
+
+  <!-- ══ HEADER ══════════════════════════════════════════ -->
+  <header>
+    <div class="header-grid">
+      <div>
+        <h1>Nguyen Huu Minh Sang</h1>
+        <span class="title-badge">Cloud Security Engineer · AWS Security · Penetration Testing</span>
+
+        <ul class="contact-list">
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            <a href="mailto:sangn6767@gmail.com">sangn6767@gmail.com</a>
+          </li>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.39a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/></svg>
+            +84 947 357 840
+          </li>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ho Chi Minh City, Vietnam
+          </li>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <a href="https://github.com/Sengtocxoen" target="_blank">github.com/Sengtocxoen</a>
+          </li>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">linkedin.com/in/YOUR-LINKEDIN</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- HackerOne Badge -->
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:10px;">
+        <a class="h1-badge" href="https://hackerone.com/sengtocxoen" target="_blank">
+          <!-- HackerOne logo SVG -->
+          <svg class="h1-badge-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="#ff5f1f"/>
+            <text x="20" y="26" font-size="18" font-weight="900" text-anchor="middle" fill="white" font-family="Arial">H1</text>
+          </svg>
+          <div class="h1-badge-text">
+            <span class="h1-badge-handle">@sengtocxoen</span>
+            <span class="h1-badge-sub">HackerOne Profile</span>
+            <div class="h1-stats">
+              <span class="stat-pill">Rep 51</span>
+              <span class="stat-pill">2 Findings</span>
+              <span class="stat-pill">$250 Earned</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ SUMMARY ═════════════════════════════════════════ -->
+  <div class="summary">
+    Cloud Security Engineer with <strong>2+ years of professional experience</strong> at Vietnam's leading FinTech (VNPAY) and a US-based SaaS company (Resola INC), specializing in <strong>AWS security architecture</strong>, <strong>SOC/SIEM operations</strong>, and <strong>web application penetration testing</strong>. Active bug bounty hunter on HackerOne with rewarded findings in enterprise platforms. Passionate about automating security workflows and building AI-augmented security tooling.
+  </div>
+
+  <main>
+
+    <!-- ══ EXPERIENCE ══════════════════════════════════════ -->
+    <section>
+      <div class="sec-heading"><h2>Professional Experience</h2></div>
+
+      <!-- Resola -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-company">Resola INC</span>
+          <span class="exp-date">Aug 2025 – Present</span>
+        </div>
+        <div class="exp-role">Cloud Security Engineer</div>
+        <ul class="bullets">
+          <li><strong>AWS Security Architecture:</strong> Design and implement secure architectures using VPC, Security Groups, IAM policies, and AWS Organizations across multi-account environments.</li>
+          <li><strong>Cloud Security Monitoring:</strong> Deploy and manage CloudTrail, GuardDuty, Security Hub, and Config; integrate SIEM with cloud-native services for unified visibility.</li>
+          <li><strong>Identity & Access Management:</strong> Implement IAM best practices, RBAC, MFA enforcement, and identity federation; conduct regular access reviews and privilege escalation testing.</li>
+          <li><strong>Compliance & Governance:</strong> Automate compliance checks using Config Rules and Lambda aligned with the CIS AWS Foundations Benchmark.</li>
+          <li><strong>IaC Security:</strong> Review Terraform/CloudFormation templates; implement automated security scanning in CI/CD pipelines using Checkov and TFSec.</li>
+          <li><strong>Container & Serverless Security:</strong> Secure containerized workloads on ECS/EKS and Lambda; enforce image scanning via ECR and runtime policy enforcement.</li>
+        </ul>
+        <div style="margin-top:10px;">
+          <div class="skill-tags">
+            <span class="skill-tag">AWS Security Hub</span><span class="skill-tag">GuardDuty</span><span class="skill-tag">CloudTrail</span><span class="skill-tag">IAM Access Analyzer</span><span class="skill-tag">Macie</span><span class="skill-tag">KMS</span><span class="skill-tag">Secrets Manager</span><span class="skill-tag">Terraform</span><span class="skill-tag">Prowler</span><span class="skill-tag">ScoutSuite</span><span class="skill-tag">Checkov</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VNPAY SE -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-company">VNPAY</span>
+          <span class="exp-date">Mar 2024 – Jul 2025</span>
+        </div>
+        <div class="exp-role">Security Engineer</div>
+        <ul class="bullets">
+          <li><strong>Penetration Testing:</strong> Conducted black-box and grey-box assessments for internal WAF, payment gateways, and new product releases; identified and tracked critical vulnerabilities through remediation.</li>
+          <li><strong>SOC & SIEM:</strong> Led Wazuh and Splunk deployment for 24/7 monitoring across <strong>500+ endpoints</strong>; designed custom threat detection rules based on MITRE ATT&CK framework; <strong>reduced false positives by 40%</strong>.</li>
+          <li><strong>PCI-DSS Compliance:</strong> Maintained ongoing PCI-DSS compliance posture; conducted quarterly security risk assessments and vulnerability management cycles.</li>
+          <li><strong>Incident Response:</strong> Led security investigations end-to-end; authored IR playbooks; coordinated cross-team remediation with development and infrastructure teams.</li>
+          <li><strong>Automation:</strong> Developed Python/Bash scripts to automate repetitive assessment and log parsing workflows, accelerating analyst throughput.</li>
+        </ul>
+        <div style="margin-top:10px;">
+          <div class="skill-tags">
+            <span class="skill-tag">Burpsuite</span><span class="skill-tag">OWASP ZAP</span><span class="skill-tag">Wazuh</span><span class="skill-tag">Splunk</span><span class="skill-tag">ELK</span><span class="skill-tag">Nmap</span><span class="skill-tag">OpenVAS</span><span class="skill-tag">Tenable.io</span><span class="skill-tag">MITRE ATT&CK</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VNPAY Intern -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-company">VNPAY</span>
+          <span class="exp-date">Aug 2023 – Feb 2024</span>
+        </div>
+        <div class="exp-role">Cloud Security Intern</div>
+        <ul class="bullets">
+          <li>Supported distributed SIEM deployment in hybrid cloud environments; optimized log collection pipelines across multi-cloud infrastructure.</li>
+          <li>Developed Python parsers for automated CVE analysis and risk-based prioritization.</li>
+          <li>Configured Splunk dashboards for real-time security event monitoring and alerting.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ BUG BOUNTY ═══════════════════════════════════════ -->
+    <section>
+      <div class="sec-heading"><h2>Bug Bounty &amp; Vulnerability Research</h2></div>
+
+      <div class="bb-grid">
+        <div class="bb-stat-card">
+          <div class="bb-stat-value">51</div>
+          <div class="bb-stat-label">Reputation</div>
+        </div>
+        <div class="bb-stat-card">
+          <div class="bb-stat-value">2</div>
+          <div class="bb-stat-label">Valid Findings</div>
+        </div>
+        <div class="bb-stat-card">
+          <div class="bb-stat-value">$250</div>
+          <div class="bb-stat-label">Bounties Earned</div>
+        </div>
+      </div>
+
+      <div class="bb-finding-card">
+        <div class="bb-finding-header">
+          <span class="bb-finding-title">Vulnerability Finding #1 – Enjin Platform</span>
+          <span class="bb-severity sev-med">Medium</span>
+        </div>
+        <div class="bb-finding-desc">Discovered and responsibly disclosed a valid security vulnerability on the Enjin blockchain gaming platform, resulting in a rewarded bug bounty.</div>
+        <div class="bb-reward">💰 Rewarded: $150 · Resolved by program</div>
+      </div>
+
+      <div class="bb-finding-card">
+        <div class="bb-finding-header">
+          <span class="bb-finding-title">Vulnerability Finding #2 – Enjin Platform</span>
+          <span class="bb-severity sev-low">Low</span>
+        </div>
+        <div class="bb-finding-desc">Second distinct vulnerability reported and triaged on the Enjin program with confirmed security impact assessment.</div>
+        <div class="bb-reward">💰 Rewarded: $100 · Resolved by program</div>
+      </div>
+
+      <div style="margin-top:12px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <a class="bb-profile-link" href="https://hackerone.com/sengtocxoen" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          hackerone.com/sengtocxoen
+        </a>
+        <span style="font-size:.78rem; color:var(--muted);">Signal: 2.20 (33rd percentile) · Impact: 15.00 (56th percentile)</span>
+      </div>
+
+      <div style="margin-top:14px;">
+        <div class="skill-tags">
+          <span class="skill-tag">Web App Pentesting</span>
+          <span class="skill-tag">API Security</span>
+          <span class="skill-tag">OAuth/OIDC Vulnerabilities</span>
+          <span class="skill-tag">GraphQL Security</span>
+          <span class="skill-tag">IDOR/BOLA</span>
+          <span class="skill-tag">Authentication Bypass</span>
+          <span class="skill-tag">OWASP Top 10</span>
+          <span class="skill-tag">HackerOne</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROJECTS ════════════════════════════════════════ -->
+    <section>
+      <div class="sec-heading"><h2>Notable Projects</h2></div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <span class="proj-title">SAST MCP – AI-Powered Security Automation Platform</span>
+          <span class="proj-year">2025</span>
+        </div>
+        <div class="proj-desc">
+          Open-source MCP server integrating <strong>23+ security tools</strong> (Semgrep, Bandit, TruffleHog, Gitleaks, Checkov, Trivy, Nmap, SQLMap) with Claude AI for automated security analysis through natural language. Built distributed architecture for Windows-to-Kali remote scanning with TOON format achieving <strong>30–60% token reduction</strong>.
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px">
+          <div class="proj-tech">
+            <span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">MCP SDK</span><span class="tech-tag">Docker</span><span class="tech-tag">Semgrep</span><span class="tech-tag">Claude AI</span>
+          </div>
+          <a class="proj-link" href="https://github.com/Sengtocxoen/sast-mcp" target="_blank">↗ github.com/Sengtocxoen/sast-mcp</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <span class="proj-title">AWS Multi-Account Security Framework</span>
+          <span class="proj-year">2025</span>
+        </div>
+        <div class="proj-desc">
+          Centralized security monitoring for multi-account AWS using Organizations, Security Hub, and GuardDuty. Automated compliance checks with Config/Lambda via Terraform. Achieved <strong>95% CIS AWS Benchmark compliance</strong>; reduced misconfigurations by <strong>60%</strong>.
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">AWS Organizations</span><span class="tech-tag">Security Hub</span><span class="tech-tag">GuardDuty</span><span class="tech-tag">Terraform</span><span class="tech-tag">Lambda</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <span class="proj-title">Automated Threat Detection Platform</span>
+          <span class="proj-year">2024</span>
+        </div>
+        <div class="proj-desc">
+          API Gateway anomaly detection using BERT language models and Python. Developed log collection pipeline with real-time SIEM integration for ML-driven threat hunting.
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">Python</span><span class="tech-tag">BERT</span><span class="tech-tag">Elasticsearch</span><span class="tech-tag">Kibana</span><span class="tech-tag">Docker</span><span class="tech-tag">AWS Lambda</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <span class="proj-title">Cloud SIEM Integration & Automation</span>
+          <span class="proj-year">2024</span>
+        </div>
+        <div class="proj-desc">
+          Integrated Wazuh with AWS CloudTrail, GuardDuty, and VPC Flow Logs. Developed Python scripts for threat intelligence enrichment and automated incident response. Reduced MTTD by <strong>45%</strong>; automated <strong>70% of security alerts</strong>.
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">Wazuh</span><span class="tech-tag">CloudTrail</span><span class="tech-tag">GuardDuty</span><span class="tech-tag">Python</span><span class="tech-tag">VPC Flow Logs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SKILLS ══════════════════════════════════════════ -->
+    <section>
+      <div class="sec-heading"><h2>Technical Skills</h2></div>
+      <div class="skills-cols">
+        <div class="skill-group">
+          <div class="skill-group-title">Cloud Security (AWS)</div>
+          <div class="skill-tags">
+            <span class="skill-tag">IAM</span><span class="skill-tag">VPC</span><span class="skill-tag">GuardDuty</span><span class="skill-tag">Security Hub</span><span class="skill-tag">CloudTrail</span><span class="skill-tag">Config</span><span class="skill-tag">Macie</span><span class="skill-tag">KMS</span><span class="skill-tag">WAF</span><span class="skill-tag">Terraform</span><span class="skill-tag">CloudFormation</span><span class="skill-tag">Prowler</span><span class="skill-tag">ScoutSuite</span><span class="skill-tag">Checkov</span><span class="skill-tag">TFSec</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Penetration Testing</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Burpsuite</span><span class="skill-tag">OWASP ZAP</span><span class="skill-tag">Metasploit</span><span class="skill-tag">Nmap</span><span class="skill-tag">Dirsearch</span><span class="skill-tag">Gobuster</span><span class="skill-tag">SQLmap</span><span class="skill-tag">XSStrike</span><span class="skill-tag">Nuclei</span><span class="skill-tag">Subfinder</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">SOC & SIEM</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Wazuh</span><span class="skill-tag">Splunk</span><span class="skill-tag">ELK Stack</span><span class="skill-tag">OpenSearch</span><span class="skill-tag">MITRE ATT&CK</span><span class="skill-tag">Sigma Rules</span><span class="skill-tag">Threat Intel</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Programming</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span><span class="skill-tag">Bash</span><span class="skill-tag">PowerShell</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Go (basic)</span><span class="skill-tag">SQL</span><span class="skill-tag">C++</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ EDUCATION ════════════════════════════════════════ -->
+    <section>
+      <div class="sec-heading"><h2>Education</h2></div>
+
+      <div class="edu-card">
+        <div>
+          <div class="edu-org">University of Information Technology – VNU-HCM</div>
+          <div class="edu-degree">B.Eng. Information Security · Talented Engineer Program</div>
+          <div class="edu-desc">Research focus: ML-based API Attack Detection · High-performance SIEM Architecture · Security in Microservices</div>
+        </div>
+        <div class="edu-date">2020 – 2024</div>
+      </div>
+
+      <div class="edu-card">
+        <div>
+          <div class="edu-org">Viettel Digital Talent 2023 (VDT)</div>
+          <div class="edu-degree">Information Security Training</div>
+          <div class="edu-desc">Advanced Web Application Pentesting · SIEM Architecture · Threat Hunting · Incident Response</div>
+        </div>
+        <div class="edu-date">Mar – Jun 2023</div>
+      </div>
+    </section>
+
+    <!-- ══ CERTIFICATIONS ═══════════════════════════════════ -->
+    <section>
+      <div class="sec-heading"><h2>Certifications &amp; Training</h2></div>
+      <ul class="cert-list">
+        <li><div><strong>AWS Certified Security – Specialty</strong> <span style="color:var(--muted); font-size:.76rem;">(In Progress)</span></div></li>
+        <li><div><strong>TryHackMe:</strong> SOC Analyst Level 1–2 · Penetration Tester Path · Red Team Path · Cloud Security (AWS)</div></li>
+        <li><div><strong>HackTheBox:</strong> Pro-Hacker level · Bug Bounty Hunter Path (In Progress) · Cloud Pentester (In Progress)</div></li>
+        <li><div><strong>HackerOne Bug Bounty:</strong> Active researcher – @sengtocxoen · 2 rewarded findings on Enjin platform</div></li>
+        <li><div><strong>Other Training:</strong> CIS AWS Foundations Benchmark · OWASP API Security Top 10 · Container Security</div></li>
+        <li><div><strong>CTF Participation:</strong> LA CTF 2025 · NahamCon CTF 2025</div></li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
