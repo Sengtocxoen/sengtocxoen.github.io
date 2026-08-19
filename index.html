@@ -308,8 +308,37 @@
       border-radius: 4px;
       padding: 2px 8px;
     }
+    .sev-high { background: rgba(239,68,68,.15); color: #f87171; border: 1px solid rgba(239,68,68,.35); }
     .sev-med { background: rgba(234,179,8,.15); color: #eab308; border: 1px solid rgba(234,179,8,.3); }
     .sev-low { background: rgba(59,130,246,.15); color: #60a5fa; border: 1px solid rgba(59,130,246,.3); }
+
+    .bb-advisory-meta {
+      font-family: 'Fira Code', monospace;
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+    }
+    .bb-advisory-meta a { color: var(--accent); text-decoration: none; }
+    .bb-advisory-meta a:hover { text-decoration: underline; }
+    .bb-pending-note {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bb-pending-note::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #eab308;
+      box-shadow: 0 0 0 3px rgba(234,179,8,.18);
+      flex-shrink: 0;
+    }
     .bb-finding-desc { font-size: .79rem; color: var(--light); }
     .bb-reward { font-size: .75rem; color: #4ade80; font-weight: 600; margin-top: 4px; }
 
@@ -604,6 +633,35 @@
         </div>
         <div class="bb-finding-desc">Second distinct vulnerability reported and triaged on the Enjin program with confirmed security impact assessment.</div>
         <div class="bb-reward">💰 Rewarded: $100 · Resolved by program</div>
+      </div>
+
+      <div style="margin-top:18px; margin-bottom:12px;">
+        <div class="skill-group-title" style="color:var(--accent);">Open-Source Security Advisories (GHSA / CVE)</div>
+      </div>
+
+      <div class="bb-finding-card">
+        <div class="bb-finding-header">
+          <span class="bb-finding-title">GHSA-j939-289f-wq4w — <code style="font-family:'Fira Code',monospace;">openapi-backend</code>: Fail-Open Authorization</span>
+          <span class="bb-severity sev-high">High · CVSS 8.2</span>
+        </div>
+        <div class="bb-finding-desc">
+          Discovered and responsibly disclosed a <strong>fail-open authorization</strong> flaw in the <strong>openapi-backend</strong> npm package (≤ 5.17.0). Security handlers returning a truthy <code style="font-family:'Fira Code',monospace;">error</code> object with additional properties were incorrectly treated as authorization success, allowing <strong>unauthenticated requests to reach protected operations</strong>. Patched in 5.18.0 by treating any truthy <code style="font-family:'Fira Code',monospace;">error</code> value as failed authorization.
+        </div>
+        <div class="bb-advisory-meta">
+          <span>CWE-285 · CWE-636 · CWE-697</span>
+          <span>Credited: @Sengtocxoen</span>
+          <span>Published: Aug 15, 2026</span>
+          <a href="https://github.com/openapistack/openapi-backend/security/advisories/GHSA-j939-289f-wq4w" target="_blank">↗ View advisory</a>
+        </div>
+      </div>
+
+      <div class="bb-finding-card" style="border-style:dashed;">
+        <div class="bb-finding-header">
+          <span class="bb-finding-title">Additional advisories in disclosure pipeline</span>
+          <span class="bb-severity sev-med">Pending</span>
+        </div>
+        <div class="bb-finding-desc">Further vulnerabilities reported to open-source maintainers — awaiting vendor confirmation and coordinated public disclosure.</div>
+        <div class="bb-pending-note">Under embargo · details published once GHSAs are live</div>
       </div>
 
       <div style="margin-top:12px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
