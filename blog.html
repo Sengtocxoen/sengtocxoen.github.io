@@ -1,0 +1,21 @@
+---
+layout: default
+title: Blog
+---
+<div class="blog-head">
+  <h1>Blog</h1>
+  <p>Security research notes and bug-hunting writeups — mostly things I broke on purpose.</p>
+</div>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li>
+    <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <div class="post-meta">{{ post.date | date: "%B %-d, %Y" }}{% if post.read_time %} · {{ post.read_time }}{% endif %}</div>
+    {% if post.tags %}<div style="margin-top:8px;">{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+    <p class="excerpt">{{ post.subtitle | default: post.excerpt | strip_html | truncate: 180 }}</p>
+  </li>
+  {% else %}
+  <li><p class="excerpt">No posts yet — check back soon.</p></li>
+  {% endfor %}
+</ul>
