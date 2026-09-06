@@ -1,0 +1,9 @@
+# Embargoed / not-yet-public writeups. Jekyll would skip _drafts anyway,
+# but this repo is PUBLIC — ignoring the folder keeps unpublished PoCs
+# out of the pushed source until each advisory goes public.
+# To publish one: move it to _posts/YYYY-MM-DD-<slug>.md and commit that.
+_drafts/
+_site/
+.jekyll-cache/
+.sass-cache/
+*.tmp
