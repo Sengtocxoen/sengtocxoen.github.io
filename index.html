@@ -646,6 +646,24 @@
 
       <div class="bb-finding-card">
         <div class="bb-finding-header">
+          <span class="bb-finding-title">GHSA-rc93-2r6p-hc2q — <code style="font-family:'Fira Code',monospace;">mssql</code> (node-mssql): T-SQL Identifier Injection</span>
+          <span class="bb-severity sev-high">High · CVSS 8.1</span>
+        </div>
+        <div class="bb-finding-desc">
+          Independently discovered and responsibly disclosed the <strong>column-name injection</strong> in the <strong>node-mssql</strong> SQL Server client (~1.65M weekly npm downloads). <code style="font-family:'Fira Code',monospace;">Table.declare()</code> interpolated column names straight into <code style="font-family:'Fira Code',monospace;">CREATE TABLE</code> DDL as <code style="font-family:'Fira Code',monospace;">[name]</code> without doubling embedded <code style="font-family:'Fira Code',monospace;">]</code>, so a name sourced from an uploaded CSV/XLSX header could close the quoted identifier and append <strong>arbitrary stacked T-SQL</strong> to the batch run by <code style="font-family:'Fira Code',monospace;">bulk({ create: true })</code>. Submitted a working proof of concept and a patch; the coordinated fix now rejects unescaped identifiers (<code style="font-family:'Fira Code',monospace;">EINJECT</code>) across parameter, column, type and procedure names.
+        </div>
+        <div class="bb-advisory-meta">
+          <span>CWE-89 · CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H</span>
+          <span>Credited: @Sengtocxoen (independent discovery + PoC)</span>
+          <span>Published: Sep 10, 2026</span>
+          <span>Patched: 9.1.4 / 9.2.2 / 9.3.3 / 10.0.5 / 11.0.2 / 12.7.2</span>
+          <a href="https://github.com/tediousjs/node-mssql/security/advisories/GHSA-rc93-2r6p-hc2q" target="_blank">↗ View advisory</a>
+          <a href="/blog/2026/09/10/a-bracket-too-far/" target="_blank">↗ Write-up</a>
+        </div>
+      </div>
+
+      <div class="bb-finding-card">
+        <div class="bb-finding-header">
           <span class="bb-finding-title">GHSA-j939-289f-wq4w — <code style="font-family:'Fira Code',monospace;">openapi-backend</code>: Fail-Open Authorization</span>
           <span class="bb-severity sev-high">High · CVSS 8.2</span>
         </div>
